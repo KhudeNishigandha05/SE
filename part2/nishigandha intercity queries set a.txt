@@ -4,20 +4,20 @@ ROLL NO -23112017
 SET- A
 
 1st:
- SELECT tn.*
-          FROM trains tn
-          WHERE tn.train_id IN (
-              SELECT c.train_id
-              FROM coach c
-              JOIN maintenance m ON c.coach_id = m.coach_id
-              JOIN schedule s ON c.train_id = s.train_id
-              JOIN route r ON s.route_id = r.route_id
-              JOIN station start ON r.starting_station = start.station_id
-              JOIN station last ON r.last_station = last.station_id
-              WHERE (start.station_name = 'Goa' AND last.station_name = 'Mumbai')
-                 OR (start.station_name = 'Ajmer' AND last.station_name = 'Lonavala')
-              GROUP BY c.train_id
-              HAVING SUM(CASE WHEN m.next_mentenance_date <= '2023-11-30' THEN 1 ELSE 0 END) >= COUNT(*) / 2
+ select tn.*
+          from trains tn
+          where tn.train_id in (
+              select c.train_id
+              from coach c
+              join maintenance m on c.coach_id = m.coach_id
+              join schedule s on c.train_id = s.train_id
+              join route r on s.route_id = r.route_id
+              join station start on r.starting_station = start.station_id
+              join station last on r.last_station = last.station_id
+              where (start.station_name = 'Goa' and last.station_name = 'Mumbai')
+                 or (start.station_name = 'Ajmer' and last.station_name = 'Lonavala')
+              group by c.train_id
+              having sum(case when m.next_mentenance_date <= '2023-11-30' then 1 else 0 end) >= count(*) / 2
         );
 
 OUTPUT --
@@ -29,15 +29,15 @@ OUTPUT --
 +----------+------------+
 
 4th: 
-SELECT r.route_id, r.distance, r.avg_travel_time,r.operating_days, r.starting_station, r.last_station, COUNT(p.pass_id) AS senior_travelers_count
-    FROM route r
-    JOIN schedule s ON r.route_id = s.route_id
-    JOIN ticket t ON s.schedule_id = t.schedule_id
-    JOIN passenger p ON t.passenger_id = p.pass_id
-    WHERE p.type = 'senior_citizen'
-    GROUP BY r.route_id, r.starting_station, r.last_station
-    ORDER BY senior_travelers_count DESC
-    LIMIT 1;
+select r.route_id, r.distance, r.avg_travel_time,r.operating_days, r.starting_station, r.last_station, count(p.pass_id) AS senior_travelers_count
+    from route r
+    join schedule s on r.route_id = s.route_id
+    join ticket t on s.schedule_id = t.schedule_id
+    join passenger p on t.passenger_id = p.pass_id
+    where p.type = 'senior_citizen'
+    group by r.route_id, r.starting_station, r.last_station
+    order by senior_travelers_count DESC
+    limit 1;
 
 OUTPUT--
 +----------+----------+-----------------+----------------+------------------+--------------+------------------------+
