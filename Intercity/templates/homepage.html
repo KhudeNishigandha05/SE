@@ -66,8 +66,22 @@
                         Book Ticket
                     </h3>
                     <!-- <label for="name" class="form-label">Name:</label><br> -->
-                    <input type="text" class="form-control" id="name" placeholder="from" name="name"><br>
-                    <input type="text" class="form-control" id="name" placeholder="to" name="name"><br>
+                  <div class="dropdown">
+                    <label for="start">Starting Station</label>
+                    <select name="start">
+                    {% for x in loc  %}
+                    <option value={{ x }}>{{ x }}</option>      
+                    {% endfor %}
+                    </select>
+
+                    <label for="last">Starting Station</label>
+                    <select name="last" id="laststation">
+                    {% for x in loc  %}
+                    <option value={{ x }}>{{ x }}</option>      
+                    {% endfor %}
+                    </select>
+                  </div>
+
 
                   <label for="email" class="form-label">Date:</label><br>
                   <input type="date" class="form-control" id="email" placeholder="" name="email"><br>

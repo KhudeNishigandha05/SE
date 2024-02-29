@@ -4,7 +4,7 @@ import mysql.connector as db
 from django.contrib import messages
 
 curr_user=None
-data={'isUser':0}
+data={'isUser':0,'loc':['pune','mumbai','japan','wano','kuri','goa']}
 cursor=None
 def root():
     global cursor
@@ -66,3 +66,6 @@ def logout(request):
     global cursor
     cursor = None
     return index(request)
+
+def home(request):
+    return render(request,'homepage.html',data)
