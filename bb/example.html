@@ -1,0 +1,73 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Create Table with Database Data</title>
+<script>
+function createTable() {
+  // Fetch data from the server using AJAX
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      var data = JSON.parse(this.responseText);
+      generateTable(data);
+    }
+  };
+  xhttp.open("GET", "/fetch-data/", true);
+  xhttp.send();
+}
+
+function generateTable(data) {
+  var table = document.createElement("table");
+  var tableHead = table.createTHead();
+  var headRow = tableHead.insertRow();
+  for (var key in data[0]) {
+    var th = document.createElement("th");
+    th.appendChild(document.createTextNode(key));
+    headRow.appendChild(th);
+  }
+  document.body.appendChild(table);
+}
+</script>
+</head>
+<body>
+
+<button onclick="createTable()">Create Table</button>
+
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>InnerHTML Table Example</title>
+</head>
+<body>
+
+<table id="myTable">
+  <tr>
+    <td>Row 1, Column 1</td>
+    <td>Row 1, Column 2</td>
+  </tr>
+  <tr>
+    <td>Row 2, Column 1</td>
+    <td>Row 2, Column 2</td>
+  </tr>
+</table>
+
+<script>
+  // Access the table element
+  var table = document.getElementById("myTable");
+
+  // Get the HTML content of the table
+  var tableHTML = table.innerHTML;
+
+  // Log the HTML content of the table
+  console.log(tableHTML);
+</script>
+
+</body>
+</html>
