@@ -12,7 +12,8 @@
             background-position: center;
             height: 100vh;
             display: flex;
-            backdrop-filter: blur(3px);
+            backdrop-filter: blur(6px);
+            
         }
 
         .container{
@@ -43,36 +44,29 @@
             box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.2); 
 }
 
-        .container1{
-            /* width:300px;  */
-            align-items: center;
-            justify-content: center;
-            /* margin: 50px;  */
-            margin-left: 350px;
+        .container1{ 
+             margin: 10px;  
+           margin-left: 300px;
             margin-top: 250px;
-            margin-bottom: 250px;
-            padding: 20px 50px; 
+            margin-bottom: 200px;
+             padding: 20px 70px; 
             border: 1px solid #ccc; 
             border-radius: 10px; 
-            background-color: rgba(116, 116, 116, 0.5);
-        }
-
-        .container2{
-            display: inline-block;
-            background-color: #ccc;
-        }
-
+            background-color: rgb(27, 26, 26,0.5);
+            box-shadow: 0px 6px 10px rgba(77, 76, 76, 0.8); 
+         }
+            
     </style>
 </head>
 <body>
 <div class="logo"><img src="logo_new.jpeg" alt="Logo" width="150"></div>
-<div class="container1"><h2 style="align-items: center; color: rgb(254, 254, 255);">Book, cancel your tickets any time</h2>
+<div class="container1">
+    <h2 style="align-items: center; color: rgb(254, 254, 255); padding-left: 143px;">Choose your profile</h2>
     <div class="container">
        <a href="user_login.html"><button type="button" class="styledButton">User</button></a> 
        <a href="agent_login.html"><button type="button" class="styledButton">Agent</button></a>
+       <a href="admin_login.html"><button type="button" class="styledButton">Admin</button></a>
     </div>
 </div>
-
-
 </body>
 </html>
